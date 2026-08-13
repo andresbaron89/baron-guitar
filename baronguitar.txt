@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baron Guitar - Clases de Guitarra Acústica y Eléctrica</title>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-dark: #0f0f0f;
+            --bg-card: #181818;
+            --gold: #d4af37;
+            --gold-light: #f3e5ab;
+            --red-accent: #e63946;
+            --text-light: #f1f1f1;
+            --text-muted: #aaaaaa;
+            --border-gold: rgba(212, 175, 55, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* HEADER / HERO */
+        header {
+            background: linear-gradient(180deg, rgba(15,15,15,0.8) 0%, rgba(15,15,15,1) 100%), 
+                        url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            padding: 60px 0 80px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .logo-box {
+            margin-bottom: 20px;
+        }
+
+        .logo-box i {
+            font-size: 50px;
+            color: var(--gold);
+        }
+
+        .logo-box h1 {
+            font-size: 2.8rem;
+            letter-spacing: 4px;
+            color: #ffffff;
+            margin-top: 5px;
+        }
+
+        .logo-box h1 span {
+            color: var(--gold);
+        }
+
+        .tagline {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 15px;
+        }
+
+        .tagline .acustica { color: var(--gold); }
+        .tagline .electrica { color: var(--red-accent); }
+
+        .audience-badge {
+            display: inline-block;
+            background-color: rgba(212, 175, 55, 0.15);
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 20px;
+            margin: 20px 0 30px;
+            font-weight: 600;
+            color: var(--gold-light);
+        }
+
+        .modalities {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .mod-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 25px;
+            border-radius: 8px;
+            border-left: 3px solid var(--gold);
+        }
+
+        /* CARACTERÍSTICAS / QUE APRENDERÁS */
+        .features {
+            padding: 60px 0;
+            background-color: #141414;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-gold);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        /* PLANES Y PRECIOS */
+        .pricing {
+            padding: 80px 0;
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            align-items: stretch;
+        }
+
+        .price-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-gold);
+            border-radius: 10px;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .price-card.featured {
+            border: 2px solid var(--gold);
+            background: linear-gradient(180deg, rgba(212, 175, 55, 0.1) 0%, var(--bg-card) 100%);
+        }
+
+        .badge-popular {
+            position: absolute;
+            top: -12px;
+            right: 15px;
+            background-color: var(--red-accent);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .price-card h3 {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        .price-card .price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #ffffff;
+            margin: 15px 0 5px;
+        }
+
+        .price-card .price-sub {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .price-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            text-align: left;
+        }
+
+        .price-card ul li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 18px;
+        }
+
+        .price-card ul li::before {
+            content: "✓";
+            color: var(--gold);
+            position: absolute;
+            left: 0;
+        }
+
+        .btn-select {
+            display: inline-block;
+            width: 100%;
+            padding: 10px;
+            background-color: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .price-card.featured .btn-select, .btn-select:hover {
+            background-color: var(--gold);
+            color: var(--bg-dark);
+        }
+
+        /* PROGRAMA DE 6 MESES - RUTA */
+        .curriculum {
+            padding: 80px 0;
+            background-color: #141414;
+        }
+
+        .months-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .month-card {
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .month-header {
+            padding: 15px;
+            font-weight: 700;
+            text-align: center;
+            color: #fff;
+        }
+
+        .m1 { background-color: #d97706; }
+        .m2 { background-color: #b45309; }
+        .m3 { background-color: #854d0e; }
+        .m4 { background-color: #2563eb; }
+        .m5 { background-color: #4f46e5; }
+        .m6 { background-color: #7c3aed; }
+
+        .month-body {
+            padding: 20px;
+        }
+
+        .month-body ul {
+            list-style: none;
+            font-size: 0.88rem;
+            margin-bottom: 15px;
+        }
+
+        .month-body ul li {
+            margin-bottom: 6px;
+            color: var(--text-muted);
+        }
+
+        .month-result {
+            background-color: rgba(255, 255, 255, 0.03);
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            border-left: 2px solid var(--gold);
+        }
+
+        .month-result strong {
+            color: var(--gold-light);
+        }
+
+        /* CERTIFICADO & BANNER FINAL */
+        .cert-section {
+            padding: 60px 0;
+            text-align: center;
+            background: linear-gradient(180deg, #141414 0%, var(--bg-dark) 100%);
+        }
+
+        .cert-box {
+            border: 2px dashed var(--gold);
+            padding: 40px;
+            border-radius: 10px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cert-box i {
+            font-size: 40px;
+            color: var(--gold);
+            margin-bottom: 15px;
+        }
+
+        /* CONTACTO & CTA FOOTER */
+        .contact-bar {
+            background-color: var(--gold);
+            color: var(--bg-dark);
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .contact-bar h2 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--bg-dark);
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--bg-dark);
+            color: #fff;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
+
+        .btn-cta:hover {
+            background-color: #222;
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid #222;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION -->
+    <header>
+        <div class="container">
+            <div class="logo-box">
+                <i class="fa-solid fa-guitar"></i>
+                <h1>BARON <span>GUITAR</span></h1>
+            </div>
+            <p class="tagline">CLASES DE GUITARRA <span class="acustica">ACÚSTICA</span> Y <span class="electrica">ELÉCTRICA</span></p>
+            <div class="audience-badge">Para niños (desde 7 años), jóvenes y adultos</div>
+            
+            <div class="modalities">
+                <div class="mod-card"><i class="fa-solid fa-user-group"></i> Presenciales y Virtuales</div>
+                <div class="mod-card"><i class="fa-solid fa-clock"></i> 60 minutos por clase</div>
+                <div class="mod-card"><i class="fa-solid fa-sliders"></i> No necesitas experiencia previa</div>
+            </div>
+        </div>
+    </header>
+
+    <!-- QUE APRENDERAS -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">¿Qué vas a aprender?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fa-solid fa-music"></i>
+                    <div>
+                        <h3>Técnica Básica y Avanzada</h3>
+                        <p style="font-size:0.85rem; color:#aaa;">Postura, digitación, picking y agilidad.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-grip-lines"></i>
+                    <div>
+                        <h3>Acordes, Ritmos y Acompañamiento</h3>
+                        <p style="font-size:0.85rem; color:#aaa;">Dominio del metrónomo y rasgueos.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    <div>
+                        <h3>Lectura de Tablaturas</h3>
+                        <p style="font-size:0.85rem; color:#aaa;">Aprende a leer y tocar rápidamente.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-record-vinyl"></i>
+                    <div>
+                        <h3>Interpretación de tus canciones</h3>
+                        <p style="font-size:0.85rem; color:#aaa;">Toca la música que realmente te gusta.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-bolt"></i>
+                    <div>
+                        <h3>Improvisación y Desarrollo</h3>
+                        <p style="font-size:0.85rem; color:#aaa;">Escalas, solos y expresión musical.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                    <div>
+                        <h3>Para Todos los Niveles</h3>
+                        <p style="font-size:0.85rem; color:#aaa;">Aprende a tu propio ritmo desde cero.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANES Y PRECIOS -->
+    <section class="pricing">
+        <div class="container">
+            <h2 class="section-title">Planes y Precios</h2>
+            <div class="pricing-grid">
+                
+                <!-- PLAN POR HORA -->
+                <div class="price-card">
+                    <h3>Clase por Hora</h3>
+                    <div class="price">$45.000 <span style="font-size: 0.9rem; font-weight: 400;">COP</span></div>
+                    <div class="price-sub">Flexibilidad total</div>
+                    <ul>
+                        <li>1 clase individual</li>
+                        <li>Duración: 60 min</li>
+                        <li>Modalidad presencial o virtual</li>
+                    </ul>
+                    <a href="https://wa.me/573115153366?text=Hola,%20quiero%20información%20sobre%20la%20Clase%20por%20Hora" class="btn-select">Reservar</a>
+                </div>
+
+                <!-- PLAN BÁSICO -->
+                <div class="price-card">
+                    <h3>Plan Básico</h3>
+                    <div class="price">$180.000 <span style="font-size: 0.9rem; font-weight: 400;">COP/mes</span></div>
+                    <div class="price-sub">Ideal para iniciar</div>
+                    <ul>
+                        <li>4 clases al mes</li>
+                        <li>1 clase por semana</li>
+                        <li>Aprende a tu ritmo</li>
+                    </ul>
+                    <a href="https://wa.me/573115153366?text=Hola,%20quiero%20inscribirme%20al%20Plan%20Básico" class="btn-select">Elegir Plan</a>
+                </div>
+
+                <!-- PLAN PERSONALIZADO (DESTACADO) -->
+                <div class="price-card featured">
+                    <div class="badge-popular">Más Elegido</div>
+                    <h3>Plan Personalizado</h3>
+                    <div class="price">$220.000 <span style="font-size: 0.9rem; font-weight: 400;">COP/mes</span></div>
+                    <div class="price-sub">Programa a tu medida</div>
+                    <ul>
+                        <li>4 clases al mes (1 por semana)</li>
+                        <li>Seguimiento personalizado</li>
+                        <li>Material de apoyo exclusivo</li>
+                    </ul>
+                    <a href="https://wa.me/573115153366?text=Hola,%20quiero%20inscribirme%20al%20Plan%20Personalizado" class="btn-select">Elegir Plan</a>
+                </div>
+
+                <!-- PLAN INTENSIVO -->
+                <div class="price-card">
+                    <h3>Plan Intensivo</h3>
+                    <div class="price">$380.000 <span style="font-size: 0.9rem; font-weight: 400;">COP/mes</span></div>
+                    <div class="price-sub">Avance acelerado</div>
+                    <ul>
+                        <li>8 clases al mes</li>
+                        <li>2 clases por semana</li>
+                        <li>Mayor frecuencia y acompañamiento</li>
+                    </ul>
+                    <a href="https://wa.me/573115153366?text=Hola,%20quiero%20inscribirme%20al%20Plan%20Intensivo" class="btn-select">Elegir Plan</a>
+                </div>
+
+                <!-- PROGRAMA 6 MESES -->
+                <div class="price-card">
+                    <h3>Programa 6 Meses</h3>
+                    <div class="price">$990.000 <span style="font-size: 0.9rem; font-weight: 400;">COP</span></div>
+                    <div class="price-sub">Formación completa</div>
+                    <ul>
+                        <li>24 clases en total</li>
+                        <li>Opción de pago: 6 cuotas de $170.000 COP</li>
+                        <li>Certificado al finalizar</li>
+                    </ul>
+                    <a href="https://wa.me/573115153366?text=Hola,%20quiero%20información%20sobre%20el%20Programa%20de%206%20Meses" class="btn-select">Ver Programa</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- RUTA ACADÉMICA (6 MESES) -->
+    <section class="curriculum">
+        <div class="container">
+            <h2 class="section-title">Programa de 6 Meses: Paso a Paso</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;">Objetivo: Al finalizar los 6 meses estarás en capacidad de tocar tus canciones favoritas, interpretar melodías, improvisar y desarrollar tu propio estilo.</p>
+            
+            <div class="months-grid">
+                <!-- MES 1 -->
+                <div class="month-card">
+                    <div class="month-header m1">MES 1: Fundamentos</div>
+                    <div class="month-body">
+                        <ul>
+                            <li>• Conocimiento de la guitarra y afinación</li>
+                            <li>• Postura y técnica básica</li>
+                            <li>• Nombres de cuerdas y trastes</li>
+                            <li>• Ejercicios de coordinación y acordes básicos</li>
+                        </ul>
+                        <div class="month-result"><strong>Resultado:</strong> Tocas tus primeras canciones con acordes básicos.</div>
+                    </div>
+                </div>
+
+                <!-- MES 2 -->
+                <div class="month-card">
+                    <div class="month-header m2">MES 2: Acordes y Ritmo</div>
+                    <div class="month-body">
+                        <ul>
+                            <li>• Acordes mayores, menores y cambios fluidos</li>
+                            <li>• Ritmos de 4/4 y 3/4</li>
+                            <li>• Uso de metrónomo y estructura de canción</li>
+                        </ul>
+                        <div class="month-result"><strong>Resultado:</strong> Tocas varias canciones completas con buen ritmo.</div>
+                    </div>
+                </div>
+
+                <!-- MES 3 -->
+                <div class="month-card">
+                    <div class="month-header m3">MES 3: Tablatura y Melodías</div>
+                    <div class="month-body">
+                        <ul>
+                            <li>• Lectura de tablaturas y melodías sencillas</li>
+                            <li>• Riffs, power chords e introducción a escalas</li>
+                            <li>• Para eléctrica: Palm mute y control del amp</li>
+                        </ul>
+                        <div class="month-result"><strong>Resultado:</strong> Lees tablaturas y tocas melodías y riffs reconocibles.</div>
+                    </div>
+                </div>
+
+                <!-- MES 4 -->
+                <div class="month-card">
+                    <div class="month-header m4">MES 4: Técnicas Eléctricas</div>
+                    <div class="month-body">
+                        <ul>
+                            <li>• Hammer-on, pull-off, slide, bend, vibrato</li>
+                            <li>• Palm muting y alternate picking</li>
+                            <li>• Escala pentatónica menor e improvisación inicial</li>
+                        </ul>
+                        <div class="month-result"><strong>Resultado:</strong> Aplicas técnicas avanzadas e improvisas con confianza.</div>
+                    </div>
+                </div>
+
+                <!-- MES 5 -->
+                <div class="month-card">
+                    <div class="month-header m5">MES 5: Acompañamiento</div>
+                    <div class="month-body">
+                        <ul>
+                            <li>• Acordes con cejilla, de quinta y progresiones</li>
+                            <li>• Arpegios y fingerpicking</li>
+                            <li>• Improvisación sobre pistas de acompañamiento</li>
+                        </ul>
+                        <div class="month-result"><strong>Resultado:</strong> Tocas con independencia y mayor riqueza armónica.</div>
+                    </div>
+                </div>
+
+                <!-- MES 6 -->
+                <div class="month-card">
+                    <div class="month-header m6">MES 6: Proyecto Final</div>
+                    <div class="month-body">
+                        <ul>
+                            <li>• Selección y pulido de canción final</li>
+                            <li>• Corrección técnica, rítmica y afinación</li>
+                            <li>• Práctica con pista y grabación/presentación</li>
+                        </ul>
+                        <div class="month-result"><strong>Resultado:</strong> Presentas tu canción final y celebras tu progreso.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICADO -->
+    <section class="cert-section">
+        <div class="container">
+            <div class="cert-box">
+                <i class="fa-solid fa-award"></i>
+                <h2>Certificado de Finalización</h2>
+                <p style="color: var(--text-muted); margin-top: 10px;">Al completar el programa de 6 meses recibirás tu certificado oficial:<br><strong style="color: var(--gold);">"Baron Guitar – Nivel Inicial"</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO Y FOOTER -->
+    <section class="contact-bar">
+        <div class="container">
+            <h2>¡TU MÚSICA, TU ESTILO, TU MOMENTO!</h2>
+            <p style="margin-bottom: 20px; font-weight: 600;">Aprende • Practica • Disfruta</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/573115153366" class="btn-cta" target="_blank">
+                    <i class="fa-brands fa-whatsapp" style="color: #25d366; font-size: 1.2rem;"></i> WhatsApp: 311 515 3366
+                </a>
+                <a href="mailto:kbaretbaron@gmail.com" class="btn-cta">
+                    <i class="fa-solid fa-envelope" style="color: var(--gold); font-size: 1.2rem;"></i> kbaretbaron@gmail.com
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Baron Guitar. Todos los derechos reservados. "Tu constancia de hoy será tu talento de mañana."</p>
+        </div>
+    </footer>
+
+</body>
+</html>
